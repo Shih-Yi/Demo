@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.page( params[:page] ).per(10)
   end
 
   def show
-    @event = Event.find(params[:id])    
+    @event = Event.find(params[:id]) 
   end
 
   def edit
