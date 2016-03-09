@@ -8,6 +8,8 @@
 
     <%#= link_to "Show", :controller => "events", :action=> "show",:id=> e %>
     <%= link_to "Show", event_path(e) %>    
+    <%= link_to "Get XML", event_path(e, :format => :xml) %>    
+    <%= link_to "Get JSON", event_path(e), :format => :json %>    
   
     <%= link_to "Edit", edit_event_path(e) %>
     <%= link_to "Delete", event_path(e), :method => :delete %>
@@ -18,5 +20,6 @@
 </ul>
 
 <%= link_to 'New Event', new_event_path %>
+<%= link_to "Atom feed", events_path(:format => :atom) %>
 
 <%= paginate @events %>
