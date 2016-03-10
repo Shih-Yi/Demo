@@ -1,6 +1,7 @@
 <%= form_for @event, :url => event_path(@event), :method => :patch do |f| %>
 
   <%= render :partial => 'form', :locals => { :f => f } %>
+  <%# 會自動找＿開頭的html.erb檔案  %>
 
   <%= f.submit "Update" %> 
 <% end %>
