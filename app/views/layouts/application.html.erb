@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= @page_title || "Demo" %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= @page_title || "Demo" %></title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:alert] %></p>
+    <div class="container">
+      <div class="row">
+        <div class"col-md-12">
 
-<%= yield %>
+          <% if flash[:notice].present? %>
+            <div class="alert alert-success" role="alert">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
 
-</body>
+          <% if flash[:alert].present? %>
+            <div class="alert alert-danger" role="alert">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>

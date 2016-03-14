@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :events
+  get "/events/first" => "events#first"
+  resources :events do
+    resources :attendees, :controller => "event_attendees"
+  end
 
   resources :people
 
+
   get "/welcome/say_hello" => "welcome#say"
-  get "welcome" => "welcome#index"  
-    
-    # The priority is based upon order of creation: first created -> highest priority.
+  get "welcome" => "welcome#index"
+
+  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -62,5 +66,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  
+
 end

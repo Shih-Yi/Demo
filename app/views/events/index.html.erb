@@ -3,26 +3,37 @@
 <%#= debug(@events[0]) %> <%#debug 印出events 第一筆物件資料 %>
 
 
-<ul>
+<table class="table">
   <% @events.each do |e| %>
-  
-    <li>
-    <%= e.name %>
 
-    <%#= link_to "Show", :controller => "events", :action=> "show",:id=> e %>
-    <%= link_to "Show", event_path(e) %>    
-    <%= link_to "Get XML", event_path(e, :format => :xml) %>    
-    <%= link_to "Get JSON", event_path(e), :format => :json %>    
-  
-    <%= link_to "Edit", edit_event_path(e) %>
-    <%= link_to "Delete", event_path(e), :method => :delete %>
-   
-    </li>
- 
+    <tr>
+      <td>
+        <%= e.name %>
+      </td>
+
+      <td>
+        <%#= link_to "Show", :controller => "events", :action=> "show",:id=> e %>
+        <%= link_to "Show", event_path(e), :class => "btn btn-primary" %>
+        <%= link_to "Attendee List", event_attendees_path(e), :class => "btn btn-primary" %>
+
+        <%= link_to "Get XML", event_path(e, :format => :xml) , :class => "btn btn-default" %>
+        <%= link_to "Get JSON", event_path(e, :format => :json) , :class => "btn btn-default" %>
+        <%= link_to "Edit", edit_event_path(e) , :class => "btn btn-default" %>
+        <%= link_to "Delete", event_path(e), :method => :delete , :class => "btn btn-danger" %>
+      </td>
+    </tr>
+
   <% end %>
-</ul>
+</table>
+
 
 <%= link_to 'New Event', new_event_path %>
 <%= link_to "Atom feed", events_path(:format => :atom) %>
 
 <%= paginate @events %>
+
+
+
+<%= link_to "first", events_path(:foo=>1)%>
+<%= link_to "first1", events_path(:foo1=>:woo1)%>
+
