@@ -1,4 +1,29 @@
 <h2><%= @event.name %></h2>
+<p><%= @event.status %></p>
+
+<p>Category: <%= @event.category.try(:name) %><p>
+
 <%= simple_format(@event.description) %>
+
+<% if @event.logo.exists?  %>
+  <%= image_tag (@event.logo.url(:thumb)) %>
+<%else %>
+  None
+<% end  %>
+
+<p>Group:
+<% @event.groups.each do |g| %>
+  <%= g.name %>
+<% end %>
+</p>
+
+<% @event.users.each do |user| %>
+  <p><%= user.email %></p>
+<% end %>
+
+
+<%= button_to "Join", join_event_path(@event) %>
+<%= button_to "Withdraw", withdraw_event_path(@event), method: :post %>
+
 
 <p><%= link_to 'Back to index',events_path %></p>

@@ -1,14 +1,33 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get "/events/first" => "events#first"
   resources :events do
+    resource :location, :controller => "event_locations"
     resources :attendees, :controller => "event_attendees"
+
+    collection do
+      get :latest
+
+      post :bulk_update
+    end
+    member do 
+      get :dashboard
+      post :join
+      post :withdraw
+    end
   end
+
+  namespace :admin do
+    resources :events # , :controller=> "admin::events"(是預設值可省略)
+  end
+
+
 
   resources :people
 
 
-  get "/welcome/say_hello" => "welcome#say"
+  get "/welcome/say_helliii" => "welcome#say"
   get "welcome" => "welcome#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

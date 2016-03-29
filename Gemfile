@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari'
+gem "paperclip"
+gem 'devise'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,9 +40,10 @@ gem 'rails_12factor', group: :production
 
 group :development, :test do
 
+  gem 'faker'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
- 
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

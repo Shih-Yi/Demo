@@ -4,12 +4,18 @@
       <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
 
       <ul>
-      <% @person.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+
+
+  <% @groups.each do |g| %>
+    <%= check_box_tag "event[group_ids][]", g.id, @event.groups.map(&:id).include?(g.id) %> <%= g.name %>
+  <% end %>
+  <%= hidden_field_tag 'event[group_ids][]','' %>
 
   <div class="field">
     <%= f.label :name %><br>

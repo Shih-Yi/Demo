@@ -6,10 +6,40 @@
   </ul>
 <% end %>
 
+<%= f.collection_select(:category_id, Category.all, :id, :name) %>
+
+<%= f.collection_check_boxes(:group_ids, Group.all, :id, :name) %>
 
 <div class="form-group">
+  <%= f.file_field :logo %>
+
+  <% if @event.logo.exists? %>
+    <%= check_box_tag "_remove_logo", "1" %> Remove logo
+  <% end %>
+</div>
+
+<%= f.fields_for :location do |location_form| %>
+  <p>
+  <%= location_form.label :name, "11Location Name" %>
+  <%= location_form.text_field :name %>
+
+  <% unless location_form.object.new_record? %>
+    <%= location_form.label :_destroy, 'Remove:' %>
+    <%= location_form.check_box :_destroy %>
+  <% end %>
+  </p>
+<% end %>
+
+
+<div class="f rm-group">
   <%= f.label :name, "Name" %>
   <%= f.text_field :name, :class => "form-control" %>
+</div>
+
+
+<div class="form-group">
+  <%= f.label :status, "Status" %>
+  <%= f.select :status, [["Published", "Published"],["Draft","Draft"]] %>
 </div>
 
 <div class="form-group">

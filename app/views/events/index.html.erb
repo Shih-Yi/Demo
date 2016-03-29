@@ -2,30 +2,57 @@
 
 <%#= debug(@events[0]) %> <%#debug 印出events 第一筆物件資料 %>
 
+<p>
+<%= link_to "Latest event", latest_events_path %>
+</p>
 
-<table class="table">
-  <% @events.each do |e| %>
+<%= form_tag events_path, :method => :get do %>
+  <%= text_field_tag "keyword" %>
+  <%= submit_tag "Search" %>
+<% end %>
 
-    <tr>
-      <td>
-        <%= e.name %>
-      </td>
 
-      <td>
-        <%#= link_to "Show", :controller => "events", :action=> "show",:id=> e %>
-        <%= link_to "Show", event_path(e), :class => "btn btn-primary" %>
-        <%= link_to "Attendee List", event_attendees_path(e), :class => "btn btn-primary" %>
 
-        <%= link_to "Get XML", event_path(e, :format => :xml) , :class => "btn btn-default" %>
-        <%= link_to "Get JSON", event_path(e, :format => :json) , :class => "btn btn-default" %>
-        <%= link_to "Edit", edit_event_path(e) , :class => "btn btn-default" %>
-        <%= link_to "Delete", event_path(e), :method => :delete , :class => "btn btn-danger" %>
-      </td>
-    </tr>
+<%= form_tag bulk_update_events_path do %>
 
-  <% end %>
-</table>
+  <%= link_to 'Sort by Name', events_path( :order => "name") %>
+  <%= link_to 'Sort by Default', events_path %>
 
+  <table class="table">
+    <% @events.each do |e| %>
+
+      <tr>
+        <td>
+          <%= check_box_tag "ids[]", e.id, false %>
+          <%= e.name %>
+        </td>
+
+        <td>
+          <%= e.user.try(:short_name) %>
+        </td>
+
+        <td>
+          <%#= link_to "Show", :controller => "events", :action=> "show",:id=> e %>
+          <%= link_to "Show", event_path(e), :class => "btn btn-primary" %>
+          <%= link_to "Dashboard", dashboard_event_path(e), :class => "btn btn-primary" %>
+          <%= link_to "Attendee List", event_attendees_path(e), :class => "btn btn-primary" %>
+          <%= link_to "Get XML", event_path(e, :format => :xml) , :class => "btn btn-default" %>
+          <%= link_to "Get JSON", event_path(e, :format => :json) , :class => "btn btn-default" %>
+          <%= link_to 'location', event_location_path(e) %>
+          <%= link_to "Edit", edit_event_path(e) , :class => "btn btn-default" %>
+          <%= link_to "Delete", event_path(e, :page => params[:page]), :method => :delete , :class => "btn btn-danger" %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+  <%#= button_to "Delete All", bulk_delete_events_path, :method => :post %>
+  <!-- # button_to 也是html form標籤 因為form裡面不能包form 所以用submit_tag-->
+  <%= submit_tag "Delete" %>
+  <%= submit_tag "Publish" %>
+
+<% end %>
 
 <%= link_to 'New Event', new_event_path %>
 <%= link_to "Atom feed", events_path(:format => :atom) %>
