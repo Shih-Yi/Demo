@@ -16,6 +16,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari'
 gem "paperclip"
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'rest-client'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

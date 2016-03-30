@@ -1,5 +1,25 @@
 namespace :dev do
 
+  task :ubike => :environment do
+
+     url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=ddb80380-f1b3-4f8e-8016-7ed9cba571d5"
+
+     json_string = RestClient.get(url)
+
+     data = JSON.parse( json_string )
+
+     data["result"]["results"].each do |u|
+       existing = Ubike.find_by_raw_id( u["_id"] )
+       if existing
+         # update
+       else
+         Ubike.create( :raw_id => u["_id"], :name => u["sna"])
+         puts "create #{u["sna"]}"
+       end
+     end
+
+   end
+
   task :rebuild => ["db:drop", "db:setup", :fake]
   # task :rebuild => ["db:drop", "db:create", "db:schema:load", "db:seed", :fake] #等於上一行
 

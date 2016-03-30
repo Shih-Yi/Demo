@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/events/first" => "events#first"
+
+  get "/ubikes" => "ubikes#ubikes_data"
+
   resources :events do
     resource :location, :controller => "event_locations"
     resources :attendees, :controller => "event_attendees"
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
 
       post :bulk_update
     end
-    member do 
+    member do
       get :dashboard
       post :join
       post :withdraw
