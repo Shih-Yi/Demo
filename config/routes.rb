@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get "/ubikes" => "ubikes#ubikes_data"
 
+  get "/ajax" => "ajaxtest#ajax"
+  get "/ajaxtest" => "ajaxtest#ajaxtest"
+
   resources :events do
     resource :location, :controller => "event_locations"
     resources :attendees, :controller => "event_attendees"

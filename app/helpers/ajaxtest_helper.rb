@@ -1,0 +1,2 @@
+module AjaxtestHelper
+end
