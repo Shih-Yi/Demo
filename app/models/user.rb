@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :events, through: :memberships
   has_many :memberships
 
+  has_many :likes
+  has_many :like_events, :through => :likes, :source => :event
+
+
   def short_name
     self.email.split("@").first
   end

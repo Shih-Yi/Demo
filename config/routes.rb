@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :events do
     resource :location, :controller => "event_locations"
     resources :attendees, :controller => "event_attendees"
+    resources :likes
 
     collection do
       get :latest

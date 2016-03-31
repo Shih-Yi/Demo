@@ -53,6 +53,8 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @events = Event.page(params[:page]).per(5)
+    render :index
   end
 
   def new
@@ -154,6 +156,8 @@ class EventsController < ApplicationController
   end
 
   def prepare_variable_for_index_template
+
+    @event = Event.new
 
     if params[:keyword]
       @events = Event.where( [ "name like ?", "%#{params[:keyword]}%" ] )

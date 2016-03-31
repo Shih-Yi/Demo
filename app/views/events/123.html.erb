@@ -1,0 +1,15 @@
+
+<%= form_for setup_event(@event), :url => events_path do |f| %>
+
+  <div class="f rm-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, :class => "form-control" %>
+  </div>
+
+
+<% end %>

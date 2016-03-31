@@ -2,13 +2,17 @@ class EventAttendeesController < ApplicationController
   before_action :set_event
 
   def index
+    # @attendee = @event.attendees.build
     @attendees = @event.attendees
+
+
   end
   def show
     @attendee = @event.attendees.find(params[:id])
   end
 
   def new
+
     @attendee = @event.attendees.build
   end
 
@@ -39,7 +43,11 @@ class EventAttendeesController < ApplicationController
   def destroy
     @attendee=@event.attendees.find(params[:id])
     @attendee.destroy
-    redirect_to event_attendees_path(@event)
+
+    respond_to do |format|
+      format.html {redirect_to event_attendees_path(@event)}
+      format.js
+    end
   end
 
 

@@ -1,6 +1,23 @@
 <h2><%= @event.name %></h2>
 <p><%= @event.status %></p>
 
+<% like = @event.find_like_by(current_user) %>
+
+<%# html的方法 %>
+<h2><%#= @event.likes.count %></h2>
+<%# if like %>
+<%#= link_to "Unlike", event_like_path(@event, like), :method => :delete, :class => "btn btn-primary btn-lg" %>
+<%# else %>
+<%#= link_to "Like", event_likes_path(@event), :method => :post, :class => "btn btn-primary btn-lg" %>
+<%# end %>
+
+<%# ajax的方法 %>
+<div id="like-area">
+  <%= render :partial => "like", :locals => { :like => like } %>
+</div>
+
+
+
 <p>Category: <%= @event.category.try(:name) %><p>
 
 <%= simple_format(@event.description) %>

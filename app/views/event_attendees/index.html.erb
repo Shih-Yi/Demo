@@ -1,15 +1,17 @@
 <h2><%= @event.name %>:List</h2>
 
-<ul>
+
+
+
+<ul id="attendees-list">
   <% @attendees.each do |a| %>
-    <li>
-    <%= a.name%>
-    <%= link_to "Show", event_attendee_path(@event, a), :class=> "btn"%>
-    <%= link_to "Edit", edit_event_attendee_path(@event, a), :class=> "btn"%>
-    <%= link_to "Delete", event_attendee_path(@event, a),:method => :delete,:data=>{:confirm=> "Are you sure?"}, :class=> "btn"%>
-    </li>
+
+    <div id="attendees-list">
+      <%= render :partial => "attendee", :locals => { :a => a} %>
+    </div>
 
   <% end %>
 </ul>
+
 
 <%= link_to "New attendee", new_event_attendee_path(@event), :class=>"btn"%>

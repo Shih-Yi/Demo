@@ -9,6 +9,13 @@
 <%= link_to "Ajax", ajax_path %>
 </p>
 
+<%= form_for setup_event(@event) do |f| %>
+
+  <%= render :partial => 'form', :locals => { :f => f } %>
+   <%= f.submit "Create", :class => "btn btn-primary" %>
+
+<% end %>
+
 <%= form_tag events_path, :method => :get do %>
   <%= text_field_tag "keyword" %>
   <%= submit_tag "Search" %>

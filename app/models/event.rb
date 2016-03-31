@@ -13,6 +13,13 @@ class Event < ActiveRecord::Base
   has_many :users, through: :memberships
   has_many :memberships
 
+  has_many :likes
+  has_many :like_users, :through => :likes, :source => :user
+
+  def find_like_by(user)
+    self.likes.find_by_user_id( user.id )
+  end
+
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 end
