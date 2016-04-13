@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :like_events, :through => :likes, :source => :event
 
+  has_many :subscriptions
+  has_many :subscribed_events, :through => :subscriptions, :source => :event
+
+  def find_subscription_by(user)
+    self.subscriptions.find_by_user_id( user.id )
+
+  end
+
 
   def short_name
     self.email.split("@").first

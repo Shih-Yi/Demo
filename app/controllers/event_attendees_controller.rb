@@ -2,17 +2,14 @@ class EventAttendeesController < ApplicationController
   before_action :set_event
 
   def index
-    # @attendee = @event.attendees.build
     @attendees = @event.attendees
-
-
+    @attendee = Attendee.new
   end
   def show
     @attendee = @event.attendees.find(params[:id])
   end
 
   def new
-
     @attendee = @event.attendees.build
   end
 

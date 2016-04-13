@@ -144,6 +144,27 @@ class EventsController < ApplicationController
     redirect_to :back
   end
 
+  def subscribe
+    @event = Event.find( params[:id] )
+
+    subscription = @event.find_subscription_by(current_user)
+    if subscription
+      # do nothing
+    else
+      @subscription = @event.subscriptions.create!( :user => current_user )
+    end
+
+    redirect_to :back
+  end
+  def unsubscribe
+    @event = Event.find( params[:id] )
+
+    subscription = @event.find_subscription_by(current_user)
+    subscription.destroy
+
+    redirect_to :back
+  end
+
 
   private
 
@@ -171,6 +192,7 @@ class EventsController < ApplicationController
     end
 
     @events = @events.page(params[:page]).per(5)
+
   end
 
 

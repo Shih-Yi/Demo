@@ -17,7 +17,7 @@ class LikesController < ApplicationController
       format.html { redirect_to :back }
       format.js { render "like" }
     end
-  end 
+  end
 
   def destroy
     @like = current_user.likes.find( params[:id] )
