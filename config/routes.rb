@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  scope :path => '/api/v1/', :module => "api_v1", :as => 'v1' do
+    resources :projects
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/events/first" => "events#first"
 
