@@ -1,7 +1,12 @@
 class ApiV1::EventsController < ApiController
 
   def index
-    render :json => { :message => "Test"}
+    @events = Event.page( params[:page] )
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    # show.json.jbuilder
   end
 
   def create
