@@ -1,13 +1,8 @@
-<p>Cart: <%= @cart.line_items.map{ |l| l.qty}.sum%></p>
+<p>Cart: <%= @cart.total %></p>
 
 <p>
 Amount:
-<% amount = 0
-@cart.line_items.each do |line|
-  amount += line.product.price * line.qty
-end
- %>
-$<%= amount %>
+$<%= @cart.amount %>
 </p>
 
 
