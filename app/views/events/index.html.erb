@@ -2,6 +2,8 @@
 
 <%#= debug(@events[0]) %> <%#debug 印出events 第一筆物件資料 %>
 
+<p><h3><%= link_to "Products", products_path %></h3></p>
+
 <p>
 <%= link_to "Latest event", latest_events_path %>
 </p>
@@ -12,7 +14,7 @@
 <%= form_for setup_event(@event) do |f| %>
 
   <%= render :partial => 'form', :locals => { :f => f } %>
-   <%= f.submit "Create", :class => "btn btn-primary" %>
+  <%= f.submit "Create", :class => "btn btn-primary" %>
 
 <% end %>
 

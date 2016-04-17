@@ -1,3 +1,27 @@
+.clearfix:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
 #demo{
   border: 1px solid red;
+}
+
+.container{
+  width: 1145px;
+  margin: 30px auto 30px;
+  padding: 0;
+}
+
+.item{
+  float: left;
+  width: 260px;
+  height: 80px;
+  margin: 30px 30px 30px 0;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+.item:nth-child(4n){
+  margin-right: 0;
 }

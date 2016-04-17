@@ -1,0 +1,17 @@
+<h1>Product List</h1>
+<div class="container clearfix">
+
+  <% @products.each do |p| %>
+
+    <div class="item">
+      <%= link_to product_path(p) do %>
+        <%= image_tag(Faker::Avatar.image, :width =>56) %>
+        <%= p.name %>
+      <% end %>
+
+      <%= p.price %>
+
+    </div>
+
+  <% end %>
+</div>

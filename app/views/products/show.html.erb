@@ -1,0 +1,5 @@
+<h2><%= @product.name %></h2>
+
+<%= image_tag(Faker::Avatar.image, :width => 180) %>
+
+<%= simple_format @product.description %>

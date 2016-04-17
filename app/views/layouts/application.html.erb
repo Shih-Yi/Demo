@@ -40,7 +40,10 @@
           <%= link_to "登入 Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %>
         <% end %>
 
-        <p><%= link_to "Ubike", ubikes_path %></p>
+        <p><%= link_to "Ubike", ubikes_path %>
+      <%= link_to "Events", events_path %></p>
+
+        <p><h3><%= link_to "Products", products_path %></h3></p>
 
         <%= yield %>
 
