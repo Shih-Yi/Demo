@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  resources :products
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/events/first" => "events#first"
 
