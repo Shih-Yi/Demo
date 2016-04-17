@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/events/first" => "events#first"
 
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :events # , :controller=> "admin::events"(是預設值可省略)
+    resources :orders
   end
 
 

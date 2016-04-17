@@ -1,0 +1,22 @@
+<p>Cart: <%= @cart.line_items.map{ |l| l.qty}.sum%></p>
+
+<p>
+Amount:
+<% amount = 0
+@cart.line_items.each do |line|
+  amount += line.product.price * line.qty
+end
+ %>
+$<%= amount %>
+</p>
+
+
+
+<ul>
+  <% @cart.line_items.each do |line| %>
+    <li>
+      <%= line.product.name  %>
+      <%= link_to "取消", cancel_product_path(line.product), :method => :post %>
+    </li>
+  <% end %>
+</ul>
