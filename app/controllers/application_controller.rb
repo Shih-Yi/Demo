@@ -14,4 +14,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :last_name
   end
 
+  def get_cart
+    if session[:cart_id]
+      @cart = Cart.find(session[:cart_id])
+    else
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
+  end
+
 end
