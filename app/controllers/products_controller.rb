@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
 
-  before_action :get_cart
 
   def index
     @products = Product.page(params[:id])

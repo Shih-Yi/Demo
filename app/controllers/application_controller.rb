@@ -33,4 +33,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_admin
+    unless current_user.admin?
+      flash[:alert] = "Nooooo~~~not allowed"
+      redirect_to root_path
+      return
+    end
+
+  end
+
 end
