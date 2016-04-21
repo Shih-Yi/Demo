@@ -12,10 +12,19 @@ class ProductsController < ApplicationController
 
   def buy
     @product = Product.find(params[:id])
+    if params[:qty]
+      +      qty = params[:qty].to_i
+    else
+      qty = 1
+    end
 
-    @cart.add_product( @product)
+    @cart.add_product( @product, qty )
 
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js # buy.js.erb
+
+    end
   end
 
   def cancel

@@ -2,13 +2,13 @@ class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :products, :through => :line_items
 
-  def add_product(product)
+  def add_product(product, qty)
     line_item = self.line_items.find_by_product_id(product.id)
     if line_item
-      line_item.qty +=1
+      line_item.qty +=qty
       line_item.save!
     else
-      self.line_items.create!( :product => product, :qty => 1)
+      self.line_items.create!( :product => product, :qty => qty)
     end
   end
 
@@ -18,7 +18,7 @@ class Cart < ActiveRecord::Base
   end
 
   def total
-  self.line_items.map{ |l| l.qty}.sum
+    self.line_items.map{ |l| l.qty}.sum
   end
 
   def amount

@@ -3,7 +3,10 @@
 <p>
 <%= link_to "Pay now!", new_order_path, class: "btn btn-primary" %>
 </p>
-<%= render "cart" %>
+
+<div id="cart">
+  <%= render "cart" %>
+</div>
 
 <div class="container clearfix">
   <% @products.each do |p| %>
@@ -15,7 +18,7 @@
       <% end %>
 
       $ <%= p.price %>
-    <%= button_to "Buy", buy_product_path(p), :class => "btn btn-danger btn-xs", :mothod => :post %>
+    <%= button_to "Buy", buy_product_path(p), :class => "btn btn-danger btn-xs", :mothod => :post, :remote => true %>
     </div>
   <% end %>
 </div>
