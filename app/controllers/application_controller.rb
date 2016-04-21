@@ -14,12 +14,22 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :last_name
   end
 
-  def get_cart
-    if cookies.signed[:cart_id]
-      @cart = Cart.find(cookies.signed[:cart_id])
+  protected
+
+  helper_method :current_cart
+
+  def current_cart
+    if @cart
+      return @cart
+
     else
-      @cart = Cart.create
-      cookies.permanent.signed[:cart_id] = @cart.id
+      if cookies.signed[:cart_id]
+        @cart = Cart.find( cookies.signed[:cart_id] )
+      else
+        @cart = Cart.create
+        cookies.permanent.signed[:cart_id] = @cart.id
+      end
+      return @cart
     end
   end
 
