@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :events
 
+  has_many :orders
+
   has_many :events, through: :memberships
   has_many :memberships
 

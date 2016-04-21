@@ -29,7 +29,7 @@ namespace :dev do
     Attendee.delete_all
 
     puts "Creating fake data!!"
-    user = User.create!(:email=> "brvast@gmail.com", :password => "12345678")
+    user = User.create!(:email=> "brvast@gmail.com", :password => "12345678", :role => "admin")
 
     50.times do |i|
       e = Event.create(:name => Faker::App.name)

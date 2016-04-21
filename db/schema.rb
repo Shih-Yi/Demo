@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415034315) do
+ActiveRecord::Schema.define(version: 20160421073615) do
 
   create_table "attendees", force: :cascade do |t|
     t.string   "name"
@@ -112,9 +112,22 @@ ActiveRecord::Schema.define(version: 20160415034315) do
     t.string   "status"
     t.string   "payment_status"
     t.string   "shipping_status"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "paid",            default: false
   end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "payment_method"
+    t.integer  "amount"
+    t.boolean  "paid",           default: false
+    t.text     "params"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
