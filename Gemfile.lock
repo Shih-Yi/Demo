@@ -247,7 +247,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  mysql2 (= 0.3.18)
+  mysql2 (~> 0.3.18)
   omniauth-facebook
   paperclip
   rails (= 4.2.0)

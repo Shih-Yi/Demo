@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 
-gem "mysql2", '0.3.18', :group => :development
+gem "mysql2",  '~> 0.3.18', :group => :production
 
 gem "rails-i18n"
 gem 'sidekiq'
