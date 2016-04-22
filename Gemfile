@@ -12,6 +12,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
+
+gem "mysql2"
+
 gem "rails-i18n"
 gem 'sidekiq'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -39,8 +44,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'pg', group: :production
-gem 'rails_12factor', group: :production
+#heroku
+# gem 'pg', group: :production
+# gem 'rails_12factor', group: :production
 
 group :development, :test do
 
