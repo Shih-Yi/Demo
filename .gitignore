@@ -16,5 +16,5 @@
 !/log/.keep
 /tmp
 /public/system
-/config/facebook.yml
+
 /test/jobs
