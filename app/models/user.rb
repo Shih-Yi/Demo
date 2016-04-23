@@ -25,6 +25,17 @@ class User < ActiveRecord::Base
     self.authentication_token = Devise.friendly_token
   end
 
+  def self.get_fb_data(access_token)
+    res = RestClient.get "https://graph.facebook.com/v2.4/me",  { :params => { :access_token => access_token } }
+
+    if res.code == 200
+      JSON.parse( res.to_str )
+    else
+      Rails.logger.warn(res.body)
+      nil
+    end
+  end
+
   def find_subscription_by(user)
     self.subscriptions.find_by_user_id( user.id )
 
