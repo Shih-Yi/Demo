@@ -18,6 +18,13 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :subscribed_events, :through => :subscriptions, :source => :event
 
+  before_create :generate_authentication_token
+
+  def generate_authentication_token
+    # self.authentication_token = SecureRandom.hex(16)
+    self.authentication_token = Devise.friendly_token
+  end
+
   def find_subscription_by(user)
     self.subscriptions.find_by_user_id( user.id )
 
