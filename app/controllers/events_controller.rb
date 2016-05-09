@@ -45,7 +45,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { @page_title = @event.name } # show.html.erb
       format.xml # show.xml.builder
-      format.json { render :json => { id: @event.id, name: @event.name, created_at: @event.created_at }.to_json }    
+      format.json { render :json => { id: @event.id, name: @event.name, created_at: @event.created_at }.to_json }
     end
   end
 
@@ -179,6 +179,7 @@ class EventsController < ApplicationController
 
   def prepare_variable_for_index_template
 
+    @users = User.all
     @event = Event.new
 
     if params[:keyword]

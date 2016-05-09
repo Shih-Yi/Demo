@@ -2,6 +2,10 @@
 
 <%#= debug(@events[0]) %> <%#debug 印出events 第一筆物件資料 %>
 
+<%= @users.last.username%>
+<%= @users.last.gender%>
+<%= image_tag (@users.last.fb_pic) %>
+
 <p><h3><%= link_to "Products", products_path %></h3></p>
 
 <p>
