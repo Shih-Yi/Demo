@@ -17,6 +17,11 @@ class EventAttendeesController < ApplicationController
     @attendee=@event.attendees.build(attendee_params)
 
     if @attendee.save
+
+      # notify users
+      UserMailer.delay_until(6.seconds.from_now).notify_comment(@event, @event.user)
+
+
       redirect_to event_attendees_path(@event)
     else
       render:action => "new"

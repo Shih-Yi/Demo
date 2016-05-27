@@ -16,6 +16,6 @@
 !/log/.keep
 /tmp
 /public/system
-
+/config/email.yml
 /config/facebook.yml
 /test/jobs

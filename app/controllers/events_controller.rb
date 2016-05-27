@@ -47,6 +47,10 @@ class EventsController < ApplicationController
       format.xml # show.xml.builder
       format.json { render :json => { id: @event.id, name: @event.name, created_at: @event.created_at }.to_json }
     end
+
+
+    UserMailer.delay_until(6.seconds.from_now).notify_comment(@event, @event.user)
+
   end
 
   def dashboard
