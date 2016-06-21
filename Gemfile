@@ -26,8 +26,14 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari'
 gem "paperclip"
 gem 'devise'
-gem 'omniauth-facebook'
+
+gem "omniauth"
+gem "omniauth-facebook"
+gem "auto-facebook"
+
 gem 'rest-client'
+
+
 
 gem "letter_opener", :group => :development
 

@@ -38,6 +38,10 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
+    auto-facebook (0.42)
+      omniauth
+      omniauth-facebook
+      rails (>= 4.0.0)
     autoprefixer-rails (6.2.3)
       execjs
       json
@@ -250,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto-facebook
   bootstrap-sass (~> 3.3.6)
   byebug
   capistrano-passenger
@@ -263,6 +268,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   mysql2 (~> 0.3.18)
+  omniauth
   omniauth-facebook
   paperclip
   pg
