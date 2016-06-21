@@ -17,6 +17,9 @@ gem 'capistrano-passenger', :group => :development
 
 gem "mysql2",  '~> 0.3.18', :group => :production
 
+#add key
+gem "figaro"
+
 gem "rails-i18n"
 gem 'sidekiq'
 gem 'bootstrap-sass', '~> 3.3.6'

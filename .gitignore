@@ -19,3 +19,6 @@
 /config/email.yml
 /config/facebook.yml
 /test/jobs
+
+# Ignore application configuration
+/config/application.yml
