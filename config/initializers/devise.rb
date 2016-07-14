@@ -242,7 +242,7 @@ Devise.setup do |config|
   #
 
   fb_config = Rails.application.config_for(:facebook)
-  config.omniauth :facebook, ENV["app_id"], ENV["secret"],
+  config.omniauth :facebook, fb_config["app_id"], fb_config["secret"],
     :scope => 'public_profile,email', :info_fields => 'email,gender,name', :image_size => 'large'
 
   # ==> Warden configuration

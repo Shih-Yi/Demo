@@ -3,7 +3,6 @@ class Pay2goController < ApplicationController
 
   def return
     result = nil
-    byebug
     ActiveRecord::Base.transaction do
       @payment = Payment.find_and_process( json_data )
       result = @payment.save
